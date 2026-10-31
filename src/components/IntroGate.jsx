@@ -82,7 +82,7 @@ export default function IntroGate({ onEnter }) {
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="animate-pulse-glow absolute inset-0 m-auto h-[70vh] w-[70vh] rounded-full bg-[radial-gradient(circle,rgba(245,197,66,0.16),rgba(255,143,191,0.12)_45%,transparent_70%)] blur-2xl" />
-        <div className="animate-float-slow absolute top-[12%] left-[12%] text-2xl opacity-70">✦</div>
+        <div className="animate-float-slow absolute top-[12%] left-[12%] text-2xl opacity-70"></div>
         <div
           className="animate-float absolute right-[14%] bottom-[18%] text-xl opacity-60"
           style={{ animationDelay: '1.2s' }}
@@ -102,7 +102,7 @@ export default function IntroGate({ onEnter }) {
         className="relative w-full max-w-md rounded-[2rem] border border-gold/25 bg-white/[0.055] px-7 py-10 text-center shadow-[0_30px_120px_rgba(0,0,0,0.6)] backdrop-blur-xl md:px-10"
       >
         <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-lg text-gold" aria-hidden>
-          ✦
+          
         </span>
 
         <p className="text-[10px] uppercase tracking-[0.45em] text-gold/70">
@@ -128,7 +128,7 @@ export default function IntroGate({ onEnter }) {
           whileTap={{ scale: 0.96 }}
           className="mt-7 w-full rounded-full bg-gradient-to-r from-rose-soft via-gold to-rose-soft px-8 py-3.5 text-sm font-semibold tracking-wide text-[#3a0620] shadow-[0_14px_40px_rgba(245,197,66,0.35)]"
         >
-          Kholo ✦
+          Kholo 
         </motion.button>
 
         <button

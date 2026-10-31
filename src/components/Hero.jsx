@@ -83,9 +83,9 @@ export default function Hero() {
           variants={item}
           className="glass relative max-w-full rounded-full px-4 py-2 text-center text-xs tracking-wide text-gold-soft md:px-5 md:text-sm"
         >
-          <span className="mr-2 text-xs text-gold">✦</span>
+          <span className="mr-2 text-xs text-gold"></span>
           {hero.kicker}
-          <span className="ml-2 text-xs text-gold">✦</span>
+          <span className="ml-2 text-xs text-gold"></span>
         </motion.span>
 
         <motion.h2

@@ -24,9 +24,9 @@ export default function SectionHeading({
     <div className={`mx-auto max-w-2xl text-center ${className}`}>
       {kicker && (
         <p className="text-[10px] uppercase tracking-[0.38em] text-gold/70 md:text-[11px]">
-          <span className="mr-2 text-gold">✦</span>
+          <span className="mr-2 text-gold"></span>
           {kicker}
-          <span className="ml-2 text-gold">✦</span>
+          <span className="ml-2 text-gold"></span>
         </p>
       )}
       <h2 className="font-display mt-3 text-balance text-4xl text-gold-soft md:text-5xl">
