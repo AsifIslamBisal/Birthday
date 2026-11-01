@@ -7,7 +7,7 @@ export function Ornament({ className = '' }) {
       <span className="h-px w-10 bg-gradient-to-r from-transparent to-gold/60 md:w-16" />
       <span className="relative flex h-3 w-3 items-center justify-center">
         <span className="absolute inset-0 rotate-45 rounded-[2px] bg-gold/25 blur-[3px]" />
-        <span className="text-[9px] leading-none text-gold">◆</span>
+        <span className="text-[9px] leading-none text-gold"></span>
       </span>
       <span className="h-px w-10 bg-gradient-to-l from-transparent to-gold/60 md:w-16" />
     </div>

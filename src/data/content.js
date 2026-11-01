@@ -27,9 +27,7 @@ export const gift = {
   cakeHint: 'Candle-e tap koro, chokh bondho kore ekta wish koro',
   revealTitle: 'Surprise, Amar Kona! 🎉',
   revealText:
-    '',
-revealText:
-'Jibone onek kichu hoyto ekdin bodle jabe, kintu tomar jonno amar ei bhalobasha-ta ami jotno kore rekhe dite chai. Tumi amar jiboner shei manush, jar ekta hashi amar kharap dintao shundor kore dite pare. Ei prithibite ashar jonno dhonnobad, Kona. Tomar jonmodin amar kacheo khub special, karon ei dinei tumi prithibite eshechhile. ❤️',
+    'Jibone onek kichu hoyto ekdin bodle jabe, kintu tomar jonno amar ei bhalobasha-ta ami jotno kore rekhe dite chai. Tumi amar jiboner shei manush, jar ekta hashi amar kharap dintao shundor kore dite pare. Ei prithibite ashar jonno dhonnobad, Kona. Tomar jonmodin amar kacheo khub special, karon ei dinei tumi prithibite eshechhile. ❤️',
   revealCta: 'Tomake ekta proshno korte chai 💌',
   again: 'Abar dekhi ♡',
 }
@@ -98,15 +96,15 @@ export const gallery = {
   subtitle:
     'Kichu muhurto chhobite bondi thake, kintu tar onubhuti roye jay moner gobhire.',
   photos: [
-    { src: '/photos/photo-1.jpg', caption: 'Aynar samne amader ek tukro golpo' },
-    { src: '/photos/photo-2.jpg', caption: 'Akash-tao jeno sedin shundor chhilo' },
-    { src: '/photos/photo-3.jpg', caption: 'Ek guchchho ful, ar tomar ekta hashi' },
-    { src: '/photos/photo-4.jpg', caption: 'Tomake dekhte dekhte hariye jawa' },
-    { src: '/photos/photo-5.jpg', caption: 'Rongin ekta din, tomar smritite bhora' },
-    { src: '/photos/photo-6.jpg', caption: 'Pashe thakar chotto ekta protishruti' },
-    { src: '/photos/photo-7.jpg', caption: 'Tomar mukhe alo, amar mone shanti' },
-    { src: '/photos/photo-8.jpg', caption: 'Coffee-r cup-e jome thaka golpo' },
-    { src: '/photos/photo-9.jpg', caption: 'Cake-er cheye mishti tomar hashi' },
+    { src: '/photos/photo-1.jpg', w: 960, h: 1280, caption: 'Aynar samne amader ek tukro golpo' },
+    { src: '/photos/photo-2.jpg', w: 1280, h: 960, caption: 'Akash-tao jeno sedin shundor chhilo' },
+    { src: '/photos/photo-3.jpg', w: 960, h: 1280, caption: 'Ek guchchho ful, ar tomar ekta hashi' },
+    { src: '/photos/photo-4.jpg', w: 1280, h: 960, caption: 'Tomake dekhte dekhte hariye jawa' },
+    { src: '/photos/photo-5.jpg', w: 960, h: 1280, caption: 'Rongin ekta din, tomar smritite bhora' },
+    { src: '/photos/photo-6.jpg', w: 720, h: 1280, caption: 'Pashe thakar chotto ekta protishruti' },
+    { src: '/photos/photo-7.jpg', w: 1265, h: 1280, caption: 'Tomar mukhe alo, amar mone shanti' },
+    { src: '/photos/photo-8.jpg', w: 720, h: 1280, caption: 'Coffee-r cup-e jome thaka golpo' },
+    { src: '/photos/photo-9.jpg', w: 960, h: 1280, caption: 'Cake-er cheye mishti tomar hashi' },
   ],
 }
 

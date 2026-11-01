@@ -43,22 +43,27 @@ export default function PhotoVisual({
       <PlaceholderArt
         index={index}
         caption={photo.caption}
-        className={className}
+        className={`aspect-square ${className}`}
       />
     )
   }
+
+  const fitClass =
+    fit === 'contain'
+      ? 'max-h-[72vh] w-full object-contain'
+      : fit === 'natural'
+        ? 'h-auto w-full object-cover'
+        : 'h-full w-full object-cover'
 
   return (
     <img
       src={photo.src}
       alt={photo.caption}
+      width={photo.w}
+      height={photo.h}
       loading={eager ? 'eager' : 'lazy'}
       onError={() => setBroken(true)}
-      className={`${
-        fit === 'contain'
-          ? 'max-h-[72vh] w-full object-contain'
-          : 'h-full w-full object-cover'
-      } ${className}`}
+      className={`${fitClass} ${className}`}
     />
   )
 }

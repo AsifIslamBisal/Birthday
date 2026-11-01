@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { gallery } from '../data/content'
 import Lightbox from './Lightbox'
@@ -16,7 +16,24 @@ const TILTS = [
   '-rotate-1',
 ]
 
-function PhotoCard({ photo, index, featured, onOpen }) {
+function useIsMobile() {
+  const query = '(max-width: 767px)'
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia(query).matches,
+  )
+
+  useEffect(() => {
+    const mq = window.matchMedia(query)
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  return isMobile
+}
+
+function PhotoCard({ photo, index, featured = false, natural = false, onOpen }) {
   const tilt = TILTS[index % TILTS.length]
 
   return (
@@ -26,7 +43,7 @@ function PhotoCard({ photo, index, featured, onOpen }) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ delay: (index % 3) * 0.08, type: 'spring', stiffness: 90 }}
       whileHover={{ rotate: 0, scale: 1.02, zIndex: 10 }}
-      className={`group relative mb-5 break-inside-avoid md:mb-7 ${tilt}`}
+      className={`group relative ${natural ? '' : 'mb-5 break-inside-avoid md:mb-7'} ${tilt}`}
     >
       <button
         type="button"
@@ -47,8 +64,9 @@ function PhotoCard({ photo, index, featured, onOpen }) {
           <PhotoVisual
             photo={photo}
             index={index}
+            fit={natural ? 'natural' : 'cover'}
             className={`w-full transition-transform duration-700 group-hover:scale-[1.04] ${
-              featured ? 'aspect-[4/5]' : 'aspect-square'
+              natural ? '' : featured ? 'aspect-[4/5]' : 'aspect-square'
             }`}
           />
           <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -64,6 +82,12 @@ function PhotoCard({ photo, index, featured, onOpen }) {
 
 export default function PhotoGallery() {
   const [active, setActive] = useState(null)
+  const isMobile = useIsMobile()
+
+  const mobileColumns = Array.from({ length: 2 }, () => [])
+  gallery.photos.forEach((photo, index) => {
+    mobileColumns[index % 2].push({ photo, index })
+  })
 
   const close = useCallback(() => setActive(null), [])
   const prev = useCallback(
@@ -79,7 +103,11 @@ export default function PhotoGallery() {
   )
 
   return (
-    <section className="relative z-10 mx-auto max-w-6xl overflow-hidden px-4 py-20 text-center md:py-28">
+    <section
+      className={`relative z-10 mx-auto max-w-6xl px-4 py-20 text-center md:py-28 ${
+        isMobile ? 'overflow-x-clip' : 'overflow-hidden'
+      }`}
+    >
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,143,191,0.1),rgba(245,197,66,0.06)_45%,transparent_70%)] blur-3xl"
         aria-hidden="true"
@@ -99,17 +127,35 @@ export default function PhotoGallery() {
         />
       </motion.div>
 
-      <div className="relative mt-12 columns-2 gap-4 md:columns-3 md:gap-7">
-        {gallery.photos.map((photo, i) => (
-          <PhotoCard
-            key={photo.src + i}
-            photo={photo}
-            index={i}
-            featured={i === 0}
-            onOpen={setActive}
-          />
-        ))}
-      </div>
+      {isMobile ? (
+        <div className="relative mt-12 grid grid-cols-2 gap-4">
+          {mobileColumns.map((items, columnIndex) => (
+            <div key={columnIndex} className="flex flex-col gap-4">
+              {items.map(({ photo, index }) => (
+                <PhotoCard
+                  key={photo.src + index}
+                  photo={photo}
+                  index={index}
+                  natural
+                  onOpen={setActive}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="relative mt-12 columns-3 gap-7">
+          {gallery.photos.map((photo, i) => (
+            <PhotoCard
+              key={photo.src + i}
+              photo={photo}
+              index={i}
+              featured={i === 0}
+              onOpen={setActive}
+            />
+          ))}
+        </div>
+      )}
 
       <AnimatePresence>
         {active !== null && (
